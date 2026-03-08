@@ -2,7 +2,7 @@ package com.back.boundedContexts.member.app
 
 import com.back.boundedContexts.member.domain.shared.Member
 import com.back.boundedContexts.member.out.shared.MemberRepository
-import com.back.global.exception.app.BusinessException
+import com.back.global.exception.app.AppException
 import com.back.standard.dto.member.type1.MemberSearchSortType1
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
@@ -19,7 +19,7 @@ class MemberFacade(
     @Transactional
     fun join(username: String, password: String?, nickname: String): Member {
         memberRepository.findByUsername(username)?.let {
-            throw BusinessException("409-1", "이미 존재하는 회원 아이디입니다.")
+            throw AppException("409-1", "이미 존재하는 회원 아이디입니다.")
         }
 
         val member = memberRepository.save(
@@ -37,6 +37,9 @@ class MemberFacade(
 
     @Transactional(readOnly = true)
     fun findByUsername(username: String): Member? = memberRepository.findByUsername(username)
+
+    @Transactional(readOnly = true)
+    fun findById(id: Int): Optional<Member> = memberRepository.findById(id)
 
     @Transactional(readOnly = true)
     fun findPagedByKw(

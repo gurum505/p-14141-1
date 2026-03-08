@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "2.2.21"
-    kotlin("plugin.spring") version "2.2.21"
     kotlin("kapt") version "2.2.21"
-    id("org.springframework.boot") version "4.0.3"
-    id("io.spring.dependency-management") version "1.1.7"
+    kotlin("jvm") version "2.2.21"
     kotlin("plugin.jpa") version "2.2.21"
+    kotlin("plugin.spring") version "2.2.21"
+    id("io.spring.dependency-management") version "1.1.7"
+    id("org.springframework.boot") version "4.0.3"
 }
 
 group = "com"
@@ -22,7 +22,7 @@ repositories {
 }
 
 dependencies {
-    // Spring Boot
+    // Spring
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
@@ -52,7 +52,10 @@ dependencies {
 
 kotlin {
     compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict", "-Xannotation-default-target=param-property")
+        freeCompilerArgs.addAll(
+            "-Xjsr305=strict",
+            "-Xannotation-default-target=param-property",
+        )
     }
 }
 
@@ -62,6 +65,8 @@ allOpen {
     annotation("jakarta.persistence.Embeddable")
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
+tasks {
+    withType<Test> {
+        useJUnitPlatform()
+    }
 }

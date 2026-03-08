@@ -10,8 +10,8 @@ import org.hibernate.query.sqm.tree.SqmTypedNode
 import org.hibernate.sql.ast.SqlAstTranslator
 import org.hibernate.sql.ast.spi.SqlAppender
 import org.hibernate.sql.ast.tree.SqlAstNode
-import org.hibernate.type.BindingContext
 import org.hibernate.type.BasicType
+import org.hibernate.type.BindingContext
 
 class PGroongaCompositeMatchFunction(
     functionName: String,
