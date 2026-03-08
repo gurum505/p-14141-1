@@ -93,7 +93,7 @@ class ApiV1MemberControllerTest {
             jsonPath("$.data.modifiedAt") { value(startsWith(member.modifiedAt.toString().take(20))) }
             jsonPath("$.data.isAdmin") { value(member.isAdmin) }
             jsonPath("$.data.name") { value(member.name) }
-            jsonPath("$.data.profileImageUrl") { value(member.profileImgUrlOrDefault) }
+            jsonPath("$.data.profileImageUrl") { value(member.redirectToProfileImgUrlOrDefault) }
         }
     }
 

@@ -55,7 +55,7 @@ class ApiV1AuthControllerTest {
             jsonPath("$.data.item.modifiedAt") { value(startsWith(member.modifiedAt.toString().take(20))) }
             jsonPath("$.data.item.isAdmin") { value(member.isAdmin) }
             jsonPath("$.data.item.name") { value(member.name) }
-            jsonPath("$.data.item.profileImageUrl") { value(member.profileImgUrlOrDefault) }
+            jsonPath("$.data.item.profileImageUrl") { value(member.redirectToProfileImgUrlOrDefault) }
             jsonPath("$.data.apiKey") { value(member.apiKey) }
             jsonPath("$.data.accessToken") { exists() }
         }
@@ -160,7 +160,7 @@ class ApiV1AuthControllerTest {
             jsonPath("$.username") { value(member.username) }
             jsonPath("$.name") { value(member.name) }
             jsonPath("$.nickname") { value(member.nickname) }
-            jsonPath("$.profileImageUrl") { value(member.profileImgUrlOrDefault) }
+            jsonPath("$.profileImageUrl") { value(member.redirectToProfileImgUrlOrDefault) }
         }
     }
 
@@ -206,7 +206,7 @@ class ApiV1AuthControllerTest {
             jsonPath("$.username") { value(member.username) }
             jsonPath("$.name") { value(member.name) }
             jsonPath("$.nickname") { value(member.nickname) }
-            jsonPath("$.profileImageUrl") { value(member.profileImgUrlOrDefault) }
+            jsonPath("$.profileImageUrl") { value(member.redirectToProfileImgUrlOrDefault) }
         }
 
         val result = resultActions.andReturn()

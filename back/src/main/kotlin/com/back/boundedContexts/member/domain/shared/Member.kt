@@ -1,5 +1,6 @@
 package com.back.boundedContexts.member.domain.shared
 
+import com.back.global.app.AppConfig
 import com.back.global.jpa.domain.AfterDDL
 import com.back.global.jpa.domain.BaseTime
 import jakarta.persistence.*
@@ -60,6 +61,9 @@ class Member(
         get() = profileImgUrl
             ?.takeIf { it.isNotBlank() }
             ?: "https://placehold.co/600x600?text=U_U"
+
+    val redirectToProfileImgUrlOrDefault: String
+        get() = "${AppConfig.siteBackUrl}/member/api/v1/members/$id/redirectToProfileImg"
 
     fun modify(nickname: String, profileImgUrl: String?) {
         this.nickname = nickname

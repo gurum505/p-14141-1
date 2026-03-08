@@ -47,7 +47,7 @@ class ApiV1AdmMemberControllerTest {
                 jsonPath("$.content[$index].username") { value(member.username) }
                 jsonPath("$.content[$index].name") { value(member.name) }
                 jsonPath("$.content[$index].nickname") { value(member.nickname) }
-                jsonPath("$.content[$index].profileImageUrl") { value(member.profileImgUrlOrDefault) }
+                jsonPath("$.content[$index].profileImageUrl") { value(member.redirectToProfileImgUrlOrDefault) }
             }
         }
     }
@@ -126,7 +126,7 @@ class ApiV1AdmMemberControllerTest {
                 jsonPath("$.username") { value(member.username) }
                 jsonPath("$.name") { value(member.name) }
                 jsonPath("$.nickname") { value(member.nickname) }
-                jsonPath("$.profileImageUrl") { value(member.profileImgUrlOrDefault) }
+                jsonPath("$.profileImageUrl") { value(member.redirectToProfileImgUrlOrDefault) }
             }
     }
 

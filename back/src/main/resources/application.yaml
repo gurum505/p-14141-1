@@ -48,6 +48,8 @@ logging:
     org.hibernate.orm.jdbc.batch: TRACE
     org.springframework.transaction.interceptor: TRACE
 custom:
+  site:
+    backUrl: 'http://localhost:${server.port}'
   jwt:
     secretKey: "${CUSTOM__JWT__SECRET_KEY:12345678901234567890123456789012}"
   accessToken:
