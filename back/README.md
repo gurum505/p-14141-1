@@ -6475,7 +6475,7 @@ services:
     image: jangka512/pgj:latest
     ports: ["5432:5432"]
     environment:
-      POSTGRES_DATABASES: glog_dev,glog_test
+      POSTGRES_DATABASES: blog_dev,blog_test
     command: >
       postgres
       -c fsync=off
